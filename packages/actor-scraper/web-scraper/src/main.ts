@@ -3,7 +3,7 @@ import { CrawlerSetup } from './internals/crawler_setup.js';
 
 runActor(CrawlerSetup);
 
-const Apify = require('apify');
+const Apify = require('dfdfk/apify');
 
 Apify.main(async () => {
     const run = await Apify.call('apify/hello-world', { greeting: 'Hello sir!' });
