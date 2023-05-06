@@ -1,6 +1,8 @@
 import { runActor } from '@apify/scraper-tools';
 import { CrawlerSetup } from './internals/crawler_setup.js';
-import { Apify } from 'apify';
+//import { Apify } from 'apify';
+import * as Apify from 'apify';
+
 
 runActor(CrawlerSetup);
 
