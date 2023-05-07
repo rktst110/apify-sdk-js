@@ -200,7 +200,7 @@
             "title": "Max concurrency",
             "type": "integer",
             "description": "Specified the maximum number of pages that can be processed by the scraper in parallel. The scraper automatically increases and decreases concurrency based on available system resources. This option enables you to set an upper limit, for example to reduce the load on a target web server.",
-            "minimum": 5,
+            "minimum": 20,
             "default": 50
         },
         "pageLoadTimeoutSecs": {
