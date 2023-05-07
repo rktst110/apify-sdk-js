@@ -187,7 +187,7 @@
             "title": "Max concurrency",
             "type": "integer",
             "description": "Defines how many pages can be processed by the scraper in parallel. The scraper automatically increases and decreases concurrency based on available system resources. Use this option to set a hard limit.",
-            "minimum": 10,
+            "minimum": 20,
             "default": 50
         },
         "pageLoadTimeoutSecs": {
