@@ -50,6 +50,7 @@ export class CrawlerSetup implements CrawlerSetupOptions {
     devtools: boolean;
     browserType?: string;
     deviceType?: string;
+    datasetName?: string;
     keyValueStoreName?: string;
     requestQueueName?: string;
 
@@ -128,8 +129,8 @@ export class CrawlerSetup implements CrawlerSetupOptions {
         this.requestQueueName = this.input.requestQueueName;
         
         // Device & browser storages
-        this.browserType = this.input.browserType;
-        this.deviceType = this.input.deviceType;
+        this.browserType = input.browserType;
+        this.deviceType = input.deviceType;
   
 
            
@@ -208,8 +209,8 @@ export class CrawlerSetup implements CrawlerSetupOptions {
                 useFingerprints: true,
                 fingerprintOptions: {
                     fingerprintGeneratorOptions: {
-                        browsers: this.input.browserType,
-                        devices: this.input.deviceType,
+                        browsers: this.browserType,
+                        devices: this.deviceType,
                     },
                 },
             },
