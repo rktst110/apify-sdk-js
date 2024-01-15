@@ -197,15 +197,7 @@ export class CrawlerSetup implements CrawlerSetupOptions {
                     maxUsageCount: this.maxSessionUsageCount,
                 },
             },
-            browserPoolOptions: {
-                useFingerprints: true,
-                fingerprintOptions: {
-                    fingerprintGeneratorOptions: {
-                        browsers: ['chrome', 'firefox', 'edge', 'safari'],
-                        devices: ['mobile'],
-                    },
-                },
-            },
+            
         };
 
         this._createNavigationHooks(options);
@@ -214,7 +206,17 @@ export class CrawlerSetup implements CrawlerSetupOptions {
             options.sessionPoolOptions!.maxPoolSize = 1;
         }
 
-        this.crawler = new PuppeteerCrawler(options);
+        this.crawler = new PuppeteerCrawler(options,
+                browserPoolOptions: {
+                useFingerprints: true,
+                fingerprintOptions: {
+                    fingerprintGeneratorOptions: {
+                        browsers: ['chrome', 'firefox', 'edge', 'safari'],
+                        devices: ['mobile'],
+                    },
+                },
+            },
+                                           );
 
         return this.crawler;
     }
