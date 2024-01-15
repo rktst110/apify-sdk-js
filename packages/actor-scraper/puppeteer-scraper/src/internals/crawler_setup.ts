@@ -48,7 +48,8 @@ export class CrawlerSetup implements CrawlerSetupOptions {
     evaledPostNavigationHooks: ((...args: unknown[]) => Awaitable<void>)[];
     blockedUrlPatterns: string[] = [];
     devtools: boolean;
-    datasetName?: string;
+    browserType?: string;
+    deviceType?: string;
     keyValueStoreName?: string;
     requestQueueName?: string;
 
