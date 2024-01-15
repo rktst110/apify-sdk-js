@@ -48,8 +48,10 @@ export class CrawlerSetup implements CrawlerSetupOptions {
     evaledPostNavigationHooks: ((...args: unknown[]) => Awaitable<void>)[];
     blockedUrlPatterns: string[] = [];
     devtools: boolean;
-    browserType?: string;
-    deviceType?: string;
+    
+  deviceType?: DeviceCategory[]; // Update to match the type in Input
+  browserType?: BrowserSpecification[] | BrowserName[]; // Update to match the type in Input
+
     datasetName?: string;
     keyValueStoreName?: string;
     requestQueueName?: string;
@@ -129,8 +131,10 @@ export class CrawlerSetup implements CrawlerSetupOptions {
         this.requestQueueName = this.input.requestQueueName;
         
         // Device & browser storages
-        this.browserType = input.browserType;
-        this.deviceType = input.deviceType;
+        //this.browserType = input.browserType;
+        //this.deviceType = input.deviceType;
+        this.deviceType = input.deviceType || undefined;
+        this.browserType = input.browserType || undefined;
   
 
            
