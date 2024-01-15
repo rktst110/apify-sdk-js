@@ -197,6 +197,15 @@ export class CrawlerSetup implements CrawlerSetupOptions {
                     maxUsageCount: this.maxSessionUsageCount,
                 },
             },
+            browserPoolOptions: {
+                useFingerprints: true,
+                fingerprintOptions: {
+                    fingerprintGeneratorOptions: {
+                        browsers: ['chrome', 'firefox', 'edge', 'safari'],
+                        devices: ['mobile'],
+                    },
+                },
+            },
         };
 
         this._createNavigationHooks(options);
