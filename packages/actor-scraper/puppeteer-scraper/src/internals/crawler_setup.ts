@@ -201,8 +201,8 @@ export class CrawlerSetup implements CrawlerSetupOptions {
                 useFingerprints: true,
                 fingerprintOptions: {
                     fingerprintGeneratorOptions: {
-                        browsers: this.input.browserType,
-                        devices: this.input.deviceType,
+                        browsers: this.browserType,
+                        devices: this.deviceType,
                     },
                 },
             },
