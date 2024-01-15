@@ -198,6 +198,8 @@ export class CrawlerSetup implements CrawlerSetupOptions {
                 },
             },
             
+               
+                                           
         };
 
         this._createNavigationHooks(options);
@@ -206,8 +208,9 @@ export class CrawlerSetup implements CrawlerSetupOptions {
             options.sessionPoolOptions!.maxPoolSize = 1;
         }
 
-        this.crawler = new PuppeteerCrawler(options,
-                browserPoolOptions: {
+        this.crawler = new PuppeteerCrawler({
+            options,
+             browserPoolOptions: {
                 useFingerprints: true,
                 fingerprintOptions: {
                     fingerprintGeneratorOptions: {
@@ -216,7 +219,7 @@ export class CrawlerSetup implements CrawlerSetupOptions {
                     },
                 },
             },
-                                           );
+        });
 
         return this.crawler;
     }
