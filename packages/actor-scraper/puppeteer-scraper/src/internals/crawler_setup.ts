@@ -125,7 +125,13 @@ export class CrawlerSetup implements CrawlerSetupOptions {
         this.datasetName = this.input.datasetName;
         this.keyValueStoreName = this.input.keyValueStoreName;
         this.requestQueueName = this.input.requestQueueName;
+        
+        // Device & browser storages
+        this.browserType = this.input.browserType;
+        this.deviceType = this.input.deviceType;
+  
 
+           
         // Initialize async operations.
         this.crawler = null!;
         this.requestList = null!;
@@ -201,8 +207,8 @@ export class CrawlerSetup implements CrawlerSetupOptions {
                 useFingerprints: true,
                 fingerprintOptions: {
                     fingerprintGeneratorOptions: {
-                        browsers: this.browserType,
-                        devices: this.deviceType,
+                        browsers: this.input.browserType,
+                        devices: this.input.deviceType,
                     },
                 },
             },
