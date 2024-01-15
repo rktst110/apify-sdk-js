@@ -145,8 +145,12 @@
             "editor": "select",
             "enum": [
                 "mobile",
-                "desktop",
+                "desktop"
             ],
+            "enumTitles": [
+                "Mobile",
+                "Desktop"
+            ]
         },
          "browserType": {
             "title": "Browser Type",
@@ -158,8 +162,14 @@
                 "chrome",
                 "edge",
                 "firefox",
-                "safari",
+                "safari"
             ],
+            "enumTitles": [
+              "chrome",
+                "edge",
+                "firefox",
+                "safari"
+            ]
         },
         "downloadMedia": {
             "sectionCaption": "Performance and limits",
