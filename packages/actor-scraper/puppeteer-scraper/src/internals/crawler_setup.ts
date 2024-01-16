@@ -178,6 +178,9 @@ export class CrawlerSetup implements CrawlerSetupOptions {
         await this.initPromise;
 
         const args = [];
+        browsers=['chrome', 'firefox', 'edge', 'safari'];
+        devices= ['desktop','mobile'];
+        
         if (this.input.ignoreCorsAndCsp) args.push('--disable-web-security');
 
         const options: PuppeteerCrawlerOptions = {
@@ -216,9 +219,9 @@ export class CrawlerSetup implements CrawlerSetupOptions {
                 fingerprintOptions: {
                     fingerprintGeneratorOptions: {
                        // browsers: this.browserType,
-                        browsers: ['chrome', 'firefox', 'edge', 'safari'],
+                        browsers,
                         //devices: this.deviceType,
-                        devices: ['desktop','mobile'],
+                        devices,
                     },
                 },
             },
