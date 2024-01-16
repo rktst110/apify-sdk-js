@@ -178,8 +178,10 @@ export class CrawlerSetup implements CrawlerSetupOptions {
         await this.initPromise;
 
         const args = [];
-        var browsers=['chrome', 'firefox', 'edge', 'safari'];
-        var devices= ['desktop','mobile'];
+        var browsers: string[] = [];
+        var devices: string[] = [];
+        browsers=['chrome', 'firefox', 'edge', 'safari'];
+        devices= ['desktop','mobile'];
         
         if (this.input.ignoreCorsAndCsp) args.push('--disable-web-security');
 
