@@ -49,8 +49,10 @@ export class CrawlerSetup implements CrawlerSetupOptions {
     blockedUrlPatterns: string[] = [];
     devtools: boolean;
     
-  deviceType?: DeviceCategory[]; // Update to match the type in Input
-  browserType?: BrowserSpecification[] | BrowserName[]; // Update to match the type in Input
+  //deviceType?: DeviceCategory[]; // Update to match the type in Input
+    deviceType: string[] = [];
+  //browserType?: BrowserSpecification[] | BrowserName[]; // Update to match the type in Input
+    browserType: string[] = [];
 
     datasetName?: string;
     keyValueStoreName?: string;
