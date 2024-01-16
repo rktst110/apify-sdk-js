@@ -13,8 +13,7 @@ import {
     PuppeteerCrawlerOptions,
     EnqueueLinksOptions,
     log,
-    BrowserSpecification,
-    BrowserName,
+
 } from '@crawlee/puppeteer';
 import { Awaitable, Dictionary } from '@crawlee/utils';
 import { readFile } from 'node:fs/promises';
@@ -32,6 +31,26 @@ const SCHEMA = JSON.parse(await readFile(new URL('../../INPUT_SCHEMA.json', impo
  * Holds all the information necessary for constructing a crawler
  * instance and creating a context for a pageFunction invocation.
  */
+
+export const enum BrowserName {
+    chrome = 'chrome',
+    firefox = 'firefox',
+    safari = 'safari',
+    edge = 'edge',
+}
+
+export const enum DeviceCategory {
+    /**
+     * Describes mobile devices (mobile phones, tablets...). These devices usually have smaller, vertical screens and load lighter versions of websites.
+     * > Note: Generating `android` and `ios` devices will not work without setting the device to `mobile` first.
+     */
+    mobile = 'mobile',
+    /**
+     * Describes desktop computers and laptops. These devices usually have larger, horizontal screens and load full-sized versions of websites.
+     */
+    desktop = 'desktop',
+}
+
 export class CrawlerSetup implements CrawlerSetupOptions {
     name = 'Puppeteer Scraper';
     rawInput: string;
@@ -56,7 +75,7 @@ export class CrawlerSetup implements CrawlerSetupOptions {
   //browserType?: BrowserSpecification[] | BrowserName[]; // Update to match the type in Input
     //browserType: string[] = [];
 
-     browserType?: BrowserSpecification[]=['chrome', 'firefox', 'edge', 'safari'];
+     browserType?: BrowserName[]=['chrome', 'firefox', 'edge', 'safari'];
         deviceType?: DeviceCategory[]= ['desktop','mobile'];
     
     datasetName?: string;
