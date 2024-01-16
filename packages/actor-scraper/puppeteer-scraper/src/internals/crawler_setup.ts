@@ -15,6 +15,10 @@ import {
     log,
 
 } from '@crawlee/puppeteer';
+
+import type { BrowserFingerprintWithHeaders as Fingerprint } from '@crawlee';
+
+
 import { Awaitable, Dictionary } from '@crawlee/utils';
 import { readFile } from 'node:fs/promises';
 import { dirname } from 'node:path';
@@ -32,11 +36,105 @@ const SCHEMA = JSON.parse(await readFile(new URL('../../INPUT_SCHEMA.json', impo
  * instance and creating a context for a pageFunction invocation.
  */
 
+export interface FingerprintGenerator {
+    getFingerprint: (fingerprintGeneratorOptions?: FingerprintGeneratorOptions) => GetFingerprintReturn;
+}
+
+export interface GetFingerprintReturn {
+    fingerprint: Fingerprint;
+}
+
+export interface FingerprintGeneratorOptions {
+    /**
+    * List of `BrowserSpecification` objects
+    * or one of `chrome`, `edge`, `firefox` and `safari`.
+    */
+    browsers?: BrowserSpecification[] | BrowserName[];
+    /**
+    * Browser generation query based on the real world data.
+    *  For more info see the [query docs](https://github.com/browserslist/browserslist#full-list).
+    *
+    * > Note: If `browserListQuery` is passed, the `browsers` array is ignored.
+    */
+    browserListQuery?: string;
+    /**
+    * List of operating systems to generate the headers for.
+    */
+    operatingSystems?: OperatingSystemsName[];
+    /**
+    * List of device types to generate the fingerprints for.
+    */
+    devices?: DeviceCategory[];
+    /**
+    * List of at most 10 languages to include in the
+    *  [Accept-Language](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Language) request header
+    *  in the language format accepted by that header, for example `en`, `en-US` or `de`.
+    */
+    locales?: string[];
+    /**
+    * Http version to be used to generate headers (the headers differ depending on the version).
+    *
+    * Can be either 1 or 2. Default value is 2.
+    */
+    httpVersion?: HttpVersion;
+    /**
+     * Defines the screen dimensions of the generated fingerprint.
+     *
+     * > Note: Using this option can lead to a substantial performance drop (from ~0.0007s/fingerprint to ~0.03s/fingerprint)
+     */
+    screen?: {
+        minWidth?: number;
+        maxWidth?: number;
+        minHeight?: number;
+        maxHeight?: number;
+    };
+}
+
+const SUPPORTED_HTTP_VERSIONS = ['1', '2'] as const;
+
+/**
+ * String specifying the HTTP version to use.
+ */
+type HttpVersion = typeof SUPPORTED_HTTP_VERSIONS[number];
+
 export const enum BrowserName {
     chrome = 'chrome',
     firefox = 'firefox',
     safari = 'safari',
     edge = 'edge',
+}
+
+export interface BrowserSpecification {
+    /**
+    * String representing the browser name.
+    */
+    name: BrowserName;
+    /**
+    * Minimum version of browser used.
+    */
+    minVersion?: number;
+    /**
+    * Maximum version of browser used.
+    */
+    maxVersion?: number;
+    /**
+    * HTTP version to be used for header generation (the headers differ depending on the version).
+    */
+    httpVersion?: HttpVersion;
+}
+
+export const enum OperatingSystemsName {
+    linux = 'linux',
+    macos = 'macos',
+    windows = 'windows',
+    /**
+     * `android` is (mostly) a mobile operating system. You can use this option only together with the `mobile` device category.
+     */
+    android = 'android',
+    /**
+     * `ios` is a mobile operating system. You can use this option only together with the `mobile` device category.
+     */
+    ios = 'ios',
 }
 
 export const enum DeviceCategory {
@@ -202,10 +300,10 @@ export class CrawlerSetup implements CrawlerSetupOptions {
         await this.initPromise;
 
         const args = [];
-        var browsers: BrowserSpecification[] | BrowserName[] | undefined;
-        var devices: BrowserSpecification[] | BrowserName[] | undefined;
-        browsers=['chrome', 'firefox', 'edge', 'safari'];
-        devices= ['desktop','mobile'];
+       // var browsers: BrowserSpecification[] | BrowserName[] | undefined;
+       // var devices: BrowserSpecification[] | BrowserName[] | undefined;
+       // browsers=['chrome', 'firefox', 'edge', 'safari'];
+//devices= ['desktop','mobile'];
         
         if (this.input.ignoreCorsAndCsp) args.push('--disable-web-security');
 
