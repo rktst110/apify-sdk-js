@@ -178,8 +178,8 @@ export class CrawlerSetup implements CrawlerSetupOptions {
         await this.initPromise;
 
         const args = [];
-        var browsers: string[] = [];
-        var devices: string[] = [];
+        var browsers: BrowserSpecification[] | BrowserName[] | undefined;
+        var devices: BrowserSpecification[] | BrowserName[] | undefined;
         browsers=['chrome', 'firefox', 'edge', 'safari'];
         devices= ['desktop','mobile'];
         
