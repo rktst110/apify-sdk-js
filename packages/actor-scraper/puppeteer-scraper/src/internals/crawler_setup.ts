@@ -13,6 +13,8 @@ import {
     PuppeteerCrawlerOptions,
     EnqueueLinksOptions,
     log,
+    BrowserSpecification,
+    BrowserName,
 } from '@crawlee/puppeteer';
 import { Awaitable, Dictionary } from '@crawlee/utils';
 import { readFile } from 'node:fs/promises';
