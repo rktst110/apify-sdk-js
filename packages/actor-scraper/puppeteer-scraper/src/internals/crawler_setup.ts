@@ -133,8 +133,8 @@ export class CrawlerSetup implements CrawlerSetupOptions {
         // Device & browser storages
         //this.browserType = input.browserType;
         //this.deviceType = input.deviceType;
-        this.deviceType = input.deviceType || undefined;
-        this.browserType = input.browserType || undefined;
+        //this.deviceType = input.deviceType || undefined;
+       // this.browserType = input.browserType || undefined;
   
 
            
@@ -213,8 +213,10 @@ export class CrawlerSetup implements CrawlerSetupOptions {
                 useFingerprints: true,
                 fingerprintOptions: {
                     fingerprintGeneratorOptions: {
-                        browsers: this.browserType,
-                        devices: this.deviceType,
+                       // browsers: this.browserType,
+                        browsers: ['chrome', 'firefox', 'edge', 'safari'],
+                        //devices: this.deviceType,
+                        devices: ['desktop','mobile'],
                     },
                 },
             },
