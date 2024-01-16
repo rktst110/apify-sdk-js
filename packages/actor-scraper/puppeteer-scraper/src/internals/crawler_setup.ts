@@ -52,10 +52,13 @@ export class CrawlerSetup implements CrawlerSetupOptions {
     devtools: boolean;
     
   //deviceType?: DeviceCategory[]; // Update to match the type in Input
-    deviceType: string[] = [];
+    //deviceType: string[] = [];
   //browserType?: BrowserSpecification[] | BrowserName[]; // Update to match the type in Input
-    browserType: string[] = [];
+    //browserType: string[] = [];
 
+     browserType?: BrowserSpecification[]=['chrome', 'firefox', 'edge', 'safari'];
+        deviceType?: DeviceCategory[]= ['desktop','mobile'];
+    
     datasetName?: string;
     keyValueStoreName?: string;
     requestQueueName?: string;
@@ -223,9 +226,9 @@ export class CrawlerSetup implements CrawlerSetupOptions {
                 fingerprintOptions: {
                     fingerprintGeneratorOptions: {
                        // browsers: this.browserType,
-                        browsers,
+                        browserType,
                         //devices: this.deviceType,
-                        devices,
+                        deviceType,
                     },
                 },
             },
