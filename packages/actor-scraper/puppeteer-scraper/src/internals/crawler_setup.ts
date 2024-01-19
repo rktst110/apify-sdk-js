@@ -59,8 +59,8 @@ export class CrawlerSetup implements CrawlerSetupOptions {
   //browserType?: BrowserSpecification[] | BrowserName[]; // Update to match the type in Input
     //browserType: string[] = [];
 
-     browserType?: BrowserName[]=['chrome', 'firefox', 'edge', 'safari'];
-        deviceType?: DeviceCategory[]= ['desktop','mobile'];
+     //browserType?: BrowserName[]=['chrome', 'firefox', 'edge', 'safari'];
+      //  deviceType?: DeviceCategory[]= ['desktop','mobile'];
     
     datasetName?: string;
     keyValueStoreName?: string;
@@ -230,11 +230,11 @@ export class CrawlerSetup implements CrawlerSetupOptions {
                     fingerprintGeneratorOptions: {
                        // browsers: this.browserType,
                         browsers:{
-                            BrowserName:'firefox'
+                            BrowserName:['firefox']
                         },
                         //devices: this.deviceType,
                         devices:{
-                            DeviceCategory:'mobile'
+                            DeviceCategory:['mobile']
                         }
                     },
                 },
