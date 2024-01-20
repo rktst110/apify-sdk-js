@@ -190,6 +190,60 @@ export class CrawlerSetup implements CrawlerSetupOptions {
        // var devices: BrowserSpecification[] | BrowserName[] | undefined;
        // browsers=['chrome', 'firefox', 'edge', 'safari'];
 //devices= ['desktop','mobile'];
+
+var browserPoolOptionsObject={}
+
+if(this.input.deviceType == "mobile")
+{
+	browserPoolOptionsObject = {
+        useFingerprints: true, // this is the default
+        fingerprintOptions: {
+            fingerprintGeneratorOptions: {
+                browsers: [
+                    BrowserName.chrome,
+                    BrowserName.firefox,
+                    BrowserName.edge,
+                    BrowserName.safari,
+                ],
+                devices: [
+                    DeviceCategory.mobile,
+                ],
+                 operatingSystems: [
+                    OperatingSystemsName.android,
+                     OperatingSystemsName.ios,
+					 OperatingSystemsName.windows,
+                ],
+                //locales: [ 'en-US', ],
+            },
+        },
+    }
+}
+else if(this.input.deviceType == "desktop")
+{
+	browserPoolOptionsObject = {
+        useFingerprints: true, // this is the default
+        fingerprintOptions: {
+            fingerprintGeneratorOptions: {
+                browsers: [
+                    BrowserName.chrome,
+                    BrowserName.firefox,
+                    BrowserName.edge,
+                    BrowserName.safari,
+                ],
+                devices: [
+                    DeviceCategory.desktop,
+                ],
+                 operatingSystems: [
+                     OperatingSystemsName.windows,
+                     OperatingSystemsName.linux,
+                     OperatingSystemsName.macos,
+                ],
+                //locales: [ 'en-US', ],
+            },
+        },
+    }
+}
+	
         
         if (this.input.ignoreCorsAndCsp) args.push('--disable-web-security');
 
@@ -224,31 +278,7 @@ export class CrawlerSetup implements CrawlerSetupOptions {
                     maxUsageCount: this.maxSessionUsageCount,
                 },
             },
-browserPoolOptions: {
-        useFingerprints: true, // this is the default
-        fingerprintOptions: {
-            fingerprintGeneratorOptions: {
-                browsers: [
-                    BrowserName.chrome,
-                    BrowserName.firefox,
-                    BrowserName.edge,
-                    BrowserName.safari,
-                ],
-                devices: [
-                    DeviceCategory.mobile,
-                    DeviceCategory.desktop,
-                ],
-                 operatingSystems: [
-                    OperatingSystemsName.android,
-                     OperatingSystemsName.windows,
-                     OperatingSystemsName.ios,
-                     OperatingSystemsName.linux,
-                     OperatingSystemsName.macos,
-                ],
-                //locales: [ 'en-US', ],
-            },
-        },
-    },
+browserPoolOptions: browserPoolOptionsObject,
                
                                            
         };
