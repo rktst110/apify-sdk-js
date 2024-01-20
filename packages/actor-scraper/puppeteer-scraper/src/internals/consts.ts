@@ -42,6 +42,9 @@ export interface Input {
     keyValueStoreName?: string;
     requestQueueName?: string;
     headless: boolean;
+    deviceType: string;
+	browserType: string;
+
 
 }
 
