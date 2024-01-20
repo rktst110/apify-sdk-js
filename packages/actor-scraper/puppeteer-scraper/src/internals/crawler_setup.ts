@@ -16,7 +16,7 @@ import {
 
 } from '@crawlee/puppeteer';
 
-
+import { BrowserName, DeviceCategory } from '@crawlee/browser-pool';
 
 import { Awaitable, Dictionary } from '@crawlee/utils';
 import { readFile } from 'node:fs/promises';
@@ -224,22 +224,23 @@ export class CrawlerSetup implements CrawlerSetupOptions {
                     maxUsageCount: this.maxSessionUsageCount,
                 },
             },
-            browserPoolOptions: {
-                useFingerprints: true,
-                fingerprintOptions: {
-                    fingerprintGeneratorOptions: {
-                       // browsers: this.browserType,
-                        browsers:{
-                            BrowserName:['firefox']
-                        },
-                        //devices: this.deviceType,
-                        devices:{
-                            DeviceCategory:['mobile']
-                        }
-                    },
-                },
+browserPoolOptions: {
+        useFingerprints: true, // this is the default
+        fingerprintOptions: {
+            fingerprintGeneratorOptions: {
+                browsers: [
+                    BrowserName.chrome,
+                    BrowserName.firefox,
+                ],
+                devices: [
+                    DeviceCategory.mobile,
+                ],
+                locales: [
+                    'en-US',
+                ],
             },
-            
+        },
+    },
                
                                            
         };
