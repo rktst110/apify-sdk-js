@@ -42,9 +42,9 @@ export interface Input {
     keyValueStoreName?: string;
     requestQueueName?: string;
     headless: boolean;
-    deviceType:string;
-    browserType:string;
-    OperatingSystemType:string;
+    browsers:BrowserName;
+    devices:DeviceCategory;
+    operatingSystems:OperatingSystemsName;
 }
 
 export const enum ProxyRotation {
