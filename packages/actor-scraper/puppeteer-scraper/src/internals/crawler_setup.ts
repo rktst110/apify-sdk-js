@@ -197,7 +197,7 @@ export class CrawlerSetup implements CrawlerSetupOptions {
 
 var browserPoolOptionsObject={}
 
-if(deviceType == "mobile")
+if(this.deviceType == "mobile")
 {
 	browserPoolOptionsObject = {
         useFingerprints: true, // this is the default
@@ -222,7 +222,7 @@ if(deviceType == "mobile")
         },
     }
 }
-else if(deviceType == "desktop")
+else if(this.deviceType == "desktop")
 {
 	browserPoolOptionsObject = {
         useFingerprints: true, // this is the default
