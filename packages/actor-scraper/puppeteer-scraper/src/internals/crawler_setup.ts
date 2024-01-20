@@ -16,7 +16,7 @@ import {
 
 } from '@crawlee/puppeteer';
 
-import { BrowserName, DeviceCategory } from '@crawlee/browser-pool';
+import { BrowserName, DeviceCategory, OperatingSystemsName  } from '@crawlee/browser-pool';
 
 import { Awaitable, Dictionary } from '@crawlee/utils';
 import { readFile } from 'node:fs/promises';
@@ -231,13 +231,21 @@ browserPoolOptions: {
                 browsers: [
                     BrowserName.chrome,
                     BrowserName.firefox,
+                    BrowserName.edge,
+                    BrowserName.safari,
                 ],
                 devices: [
                     DeviceCategory.mobile,
+                    DeviceCategory.desktop,
                 ],
-                locales: [
-                    'en-US',
+                 operatingSystems: [
+                    OperatingSystemsName.android,
+                     OperatingSystemsName.windows,
+                     OperatingSystemsName.ios,
+                     OperatingSystemsName.linux,
+                     OperatingSystemsName.macos,
                 ],
+                //locales: [ 'en-US', ],
             },
         },
     },
