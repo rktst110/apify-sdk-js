@@ -144,8 +144,9 @@ export class CrawlerSetup implements CrawlerSetupOptions {
         this.requestQueueName = this.input.requestQueueName;
         
         // Device & browser storages
+		 this.deviceType = this.input.deviceType;
         this.browserType = this.input.browserType;
-        this.deviceType = this.input.deviceType;
+       
         //this.deviceType = input.deviceType || undefined;
        // this.browserType = input.browserType || undefined;
   
@@ -196,7 +197,7 @@ export class CrawlerSetup implements CrawlerSetupOptions {
 
 var browserPoolOptionsObject={}
 
-if(this.input.deviceType == "mobile")
+if(deviceType == "mobile")
 {
 	browserPoolOptionsObject = {
         useFingerprints: true, // this is the default
@@ -221,7 +222,7 @@ if(this.input.deviceType == "mobile")
         },
     }
 }
-else if(this.input.deviceType == "desktop")
+else if(deviceType == "desktop")
 {
 	browserPoolOptionsObject = {
         useFingerprints: true, // this is the default
