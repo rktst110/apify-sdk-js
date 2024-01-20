@@ -144,8 +144,8 @@ export class CrawlerSetup implements CrawlerSetupOptions {
         this.requestQueueName = this.input.requestQueueName;
         
         // Device & browser storages
-        this.browserType = input.browserType;
-        this.deviceType = input.deviceType;
+        this.browserType = this.input.browserType;
+        this.deviceType = this.input.deviceType;
         //this.deviceType = input.deviceType || undefined;
        // this.browserType = input.browserType || undefined;
   
